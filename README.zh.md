@@ -12,7 +12,7 @@ DeepSeek Harness (DSH) 原生网络搜索增强插件。
 - **引用精准配对**：将每条 URL 与对应文本块中的 `citations` 引用摘录绑定为 `snippet`。
 - **通用协议设计**：标准 `/v1/messages` + `web_search_20250305`，不绑定特定供应商，随时可平滑升级切换后端。
 - **强化搜索预算**：默认支持单次调用执行最多 8 次搜索 (`maxUses: 8`)，生成上限 8192 tokens。
-- **无感挂载接管**：自带 `cordis.patch.yml`，一键无感接管 DSH 的 `ctx.web`，自动禁用官方解析器，防止误降级或模糊冲突。
+- **无感挂载接管**：自带 `cordis.patch.yml`，一键无感接管 DSH 的 `ctx.web`，无缝提供增强型搜索 Provider。
 
 ## 安装方式
 
@@ -45,3 +45,12 @@ dsh plugin --profile web add C:\Users\lldois\workspace\dsh-web-search-plus
 ## 开源协议
 
 MIT License (c) 2026 lldois
+
+## 可选：手动停用官方搜索插件
+
+如果你希望在配置树中完全停用官方自带的 `web-search-deepseek`，可以在你的 profile 目录下（如 `~/.dsh/profiles/web/cordis.patch.yml`）添加：
+
+```yaml
+- id: web-search-deepseek
+  disabled: true
+```

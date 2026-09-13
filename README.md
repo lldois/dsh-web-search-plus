@@ -43,3 +43,12 @@ You can configure options in DSH Settings UI under **Plugin configuration -> Web
 ## License
 
 MIT License (c) 2026 lldois
+
+## Optional: Manually Disable the Shipped Search Provider
+
+If you prefer to explicitly disable the official `web-search-deepseek` plugin, add the following to your profile\'s `cordis.patch.yml`:
+
+```yaml
+- id: web-search-deepseek
+  disabled: true
+```
