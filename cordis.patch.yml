@@ -1,0 +1,14 @@
+# dsh-web-search-plus bundle patch
+# 1. Disable the shipped official provider to prevent accidental fallback or provider ambiguity
+- id: web-search-deepseek
+  disabled: true
+
+# 2. Register web-search-plus
+- insert:
+    - id: web-search-plus
+      name: 'dsh-web-search-plus'
+
+# 3. Explicitly point the web seam to web-search-plus
+- id: web
+  config:
+    searchProvider: web-search-plus
